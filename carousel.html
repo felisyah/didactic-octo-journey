@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+        .carousel{
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+            background: gray;
+        }
+        .carouselslide{
+            width: 100%;
+            height: 100vh;
+            display: none;
+            position: absolute;
+            animation: slide 3s ease infinite;
+        }
+        .carousel .carouselslide:nth-child(1){
+            background: salmon;
+            background-image: url(dragonv2.jpg);
+            background-size: 100%;
+        }
+        .carousel .carouselslide:nth-child(2){
+            background: greenyellow;
+            background-image: url(dragon.webp);
+            background-size: 100%;
+        }
+        .carousel .carouselslide:nth-child(3){
+            background: orange;
+            background-image: url(dragonv3.webp);
+            background-size: 100%;
+        }
+        @keyframes slide{
+            0%, 100%{opacity: 0;}
+            10%, 90%{opacity: 1;}
+        }
+    </style>
+</head>
+<body>
+    <div class="carousel">
+        <div class="carouselslide">
+            <img src="download (1).jpeg" alt="">
+        </div>
+        <div class="carouselslide">
+            <img src="download (2).jpeg" alt="">
+        </div>
+        <div class="carouselslide">
+            <img src="𝓪𝓷𝓲𝓶𝓮 𝓹𝓪𝓷𝓬𝓪𝓴𝓮𝓼.jpeg" alt="">
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function(){
+            const slides = document.querySelectorAll(".carouselslide");
+            let currentSlideIndex = 0;
+
+           function showSlide(index){
+            slides[currentSlideIndex].style.display = "none";
+            currentSlideIndex = (index + slides.length) % slides.length;
+            slides[currentSlideIndex].style.display = "block";
+           } 
+           function nextSlide(){
+            showSlide(currentSlideIndex + 1);
+           }
+           showSlide(currentSlideIndex);
+           setInterval(nextSlide, 1000);
+        })
+        
+    </script>
+</body>
+</html>
